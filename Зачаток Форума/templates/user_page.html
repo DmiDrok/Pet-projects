@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{{ super() }}
+
+{% block content %}
+
+<div class="info_user">
+    <h3>Информация о <a href="/user/{{ username }}">{{ username }}</a>:</h3>
+
+    <div class="all_info">
+        <p class="p_info num_posts">Количество статей: {{ num_posts }}</p>
+        <p class="p_info date_reg">Дата регистрации: {{ date_reg }}</p>
+        <p class="p_info late_post">
+            Последняя статья: 
+            <a href="/post/{{ late_post[1] }}" id="late_post">
+                {{ late_post[0] }}
+            </a>
+        </p>
+    </div>
+</div>
+
+{% endblock %}
