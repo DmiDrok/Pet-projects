@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{{ super() }}
+
+<!--Основной контент-->
+{% block content %}
+
+<div id="block_self_user">
+    {% if user_name %}
+    <a href="/user/{{ user_name }}" id="user_self">{{ user_name }}</a>
+    {% endif %}
+</div>
+
+<div class="search_block">
+    {% for msg in get_flashed_messages() %}
+    <span>{{ msg }}</span>
+    {% endfor %}
+    <form action="" method="POST" id="search_form">
+        <div class="seacrh_input_block">
+            <input type="text" placeholder="Введите тег поста" name="some_tag" id="search_input">
+            <input type="submit" value="▶" id="search_submit">
+        </div>
+    </form>
+</div>
+
+<div class="all_posts">
+    <h3>Все статьи</h3>
+
+    {% for post in all_posts %}
+    <div class="post" id="{{ post[-1] }}">
+        <a href="/post/{{ post[-1] }}" class="name_of_post">{{ post[0][:50] }}</a>
+        <a href="/user/{{ post[2] }}" class="name_of_user">{{ post[2] }}</a>
+        <p>{{ post[1] | striptags }}</p>
+        <p class="tag_of_post">[{{ post[3][:15] }}]</p>
+
+        <!--{% if is_admin == True %}
+        <form action="" method="POST" id="close_post_x">
+            <input type="submit" value="X" name="close_{{ post[-1] }}">
+        </form>
+        {% endif %}-->
+        
+
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,398 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+html
+{
+    min-width: 1300px;
+}
+
+body
+{
+    display: grid;
+    background-color: #EDEEF0;
+    grid-row-gap: 1rem;
+}
+
+header
+{
+    background-color: #fff;
+    font-family: Arial;
+    padding: 1.5rem 3rem;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 50% auto;
+}
+
+header nav
+{
+    display: grid;
+    grid-auto-flow: column;
+    align-content: center;
+    justify-content: center;
+    grid-column-gap: 2rem;
+}
+
+header .logo
+{
+    cursor: default;
+    align-self: center;
+}
+
+header nav{align-self: center;}
+
+header nav a
+{
+    text-decoration: none;
+    font-size: 18px;
+    transition-duration: .2s;
+    color: #405eb9;
+    white-space: nowrap;
+}
+
+header nav a:hover
+{
+    color: #708ad8;
+}
+
+.main_content
+{
+    position: relative;
+    background-color: #fcfcfc;
+    min-height: 80vh;
+    width: 60%;
+    justify-self: center;
+    display: grid;
+    flex-direction: column;
+    padding: 20px 20px 60px 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+#reg_block
+{
+    position: relative;
+    justify-self: center;
+    align-self: center;
+}
+
+#reg_block form
+{
+    display: grid;
+    grid-row-gap: 15px;
+    width: 250px;
+}
+
+#reg_block form input:not(input[type="submit"])
+{
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 10px;
+    border: 2px solid #EDEEF0;
+}
+
+#reg_block form input[type="submit"]
+{
+    padding: 10px 15px;
+    cursor: pointer;
+    background-color: #f9f9f9;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 70%;
+    justify-self: end;
+    transition-duration: .2s;
+}
+
+#reg_block form input[type="submit"]:hover
+{
+    background-color: #EDEEF0;
+}
+
+#block_self_user
+{
+    margin-bottom: 2rem;
+    font-size: 16px;
+}
+
+#user_self:hover
+{
+    color: red;
+}
+
+.add_post_block
+{
+    padding: 4rem;
+}
+
+.add_post_block form
+{
+    display: grid;
+    grid-row-gap: 2rem;
+    width: 45%;
+}
+
+.post_name, .post_tag
+{
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: 10px;
+    grid-template-columns: 50% auto;
+}
+
+.add_post_block form
+{
+    font-family: Georgia;
+}
+
+.add_post_block form textarea
+{
+    resize: none;
+    margin-top: 10px;
+}
+
+.add_post_block input[type="submit"]
+{
+    padding: 10px 15px;
+    cursor: pointer;
+    background-color: #f9f9f9;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 70%;
+    justify-self: end;
+    transition-duration: .2s;
+}
+
+.add_post_block input[type="submit"]:hover
+{
+    background-color: #EDEEF0;
+}
+
+.all_posts
+{
+    text-align: start;
+    font-family: Arial;
+    height: 60vh;
+    overflow-y: scroll;
+    padding-right: 3rem;
+}
+
+.post
+{
+    margin-top: 2rem;
+    padding-left: 1rem;
+    display: grid;
+    border: 1px solid #000;
+    padding: 1rem;
+    grid-template-columns: 80% auto;
+    grid-row-gap: 1rem;
+    position: relative;
+}
+
+.post a
+{
+    width: 40%;
+    text-decoration: none;
+    color: #405eb9;
+    font-weight: 600;
+}
+
+.post p
+{
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.name_of_user
+{
+    justify-self: end;
+}
+
+.post a:hover
+{
+    color: #708ad8;
+}
+
+.content_post
+{
+    font-family: Georgia;
+    min-height: 100vh;
+}
+
+.content_post p
+{
+    margin-top: 2rem;
+    font-size: 18px;
+}
+
+.top_content
+{
+    display: grid;
+    grid-auto-flow:column;
+}
+
+.top_content a
+{
+    font-family: Tahoma;
+    justify-self: end;
+    text-decoration: None;
+    color: #000;
+}
+
+.top_content a:hover{text-decoration: underline;}
+
+.go_other
+{
+    position: absolute;
+    right: -15rem;
+    font-size: 15px;
+    color: #405eb9;
+}
+
+.go_other:hover
+{
+    color: #708ad8;
+}
+
+.checkbox_div
+{
+    font-family: Arial;
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: .5rem;
+    justify-self: end;
+    font-size: 15px;
+}
+
+.checkbox_div input[type="checkbox"]
+{
+    cursor: pointer;
+}
+
+.flash_messages_here
+{
+    left: 50%;
+    top: 15%;
+    transform:translate(-50%, -50%);
+    position: absolute;
+}
+
+.flash_messages_here p
+{
+    position: relative;
+    font-size: 17px;
+    /*min-width: 325px;*/
+}
+
+.flash_messages_here p .line
+{
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: #000;
+    opacity: 0.4;
+}
+
+.info_user
+{
+    font-family: Georgia;
+    color: #000;
+    font-size: 17px;
+}
+
+.info_user a
+{
+    color: #000;
+}
+
+.all_info
+{
+    margin-top: 2rem;
+    margin-left: 5px;
+    display: grid;
+    grid-row-gap: 1rem;
+}
+
+.p_info
+{
+    font-size: 18px;
+
+}
+
+.search_block
+{
+    position: absolute;
+    right: 2rem;
+    top: 1rem;
+}
+
+#search_input
+{
+    padding: 5px;
+    font-family: Georgia;
+}
+
+#search_submit
+{
+    padding: 5px;
+    border-radius: 0;
+    border: none;
+    cursor: pointer;
+    background-color: #f9f9f9;
+    font-weight: 500;
+    font-size: 15px;
+    transition-duration: .2s;
+    border-radius: 5px;
+}
+
+#search_submit:hover
+{
+    /*background-color: #EDEEF0;*/
+    background-color: #000;
+    color: #fff;
+}
+
+#search_form
+{
+    display: grid;
+    justify-content: center;
+}
+
+.tag_of_post
+{
+    margin-left: 1rem;
+    color: #d25aed;
+}
+
+#late_post:hover
+{
+    color: red;
+}
+
+#close_post_x
+{
+    position: absolute;
+    right: .2rem;
+}
+
+#close_post_x input
+{
+    border: none;
+    background: #fff;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 900;
+    color: rgb(179, 38, 38);
+}
+
+#close_post_x input:hover
+{
+    text-decoration: underline;
+}
