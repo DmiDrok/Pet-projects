@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{{ super() }}
+
+{% block title_block %}
+<title>Оплата товаров</title>
+{% endblock %}
+
+{% block title_header %}
+<h1>
+    <u>Оплата товаров: {{ finally_price }}Р</u>
+</h1>
+{% endblock %}
+
+{% block content %}
+
+<section class="payment">
+    {% if display_vidget == "display" %}
+    <iframe src="https://widget.qiwi.com/widgets/middle-widget-300x300?publicKey=48e7qUxn9T7RyYE1MVZswX1FRSbE6iyCj2gCRwwF3Dnh5XrasNTx3BGPiMsyXQFNKQhvukniQG8RTVhYm3iP4SBRePaNoCZxYvvjjCVvjYtoR4j61UVPNsj2CKqm6NxzeTkAj1aDmkAG9x1QMktCCGDC9Dvyp9zfeYu5w51S4khqUPkYTAQz4d8Mz4U4p&noCache=true" width="300" height="300" allowTransparency="true" scrolling="no" frameBorder="0"></iframe>
+    {% endif %}
+    <div class="notification">
+        <p>
+            Мы не можем вставить сумму всех ваших заказов в форму, сделать это должны Вы.
+        </p>
+            
+
+        <p>
+            Мы внимательно отнесёмся к сумме, приложенной вами при переводе, и, в случае недостачи - потребуем доплаты, в случае переплаты - вернём деньги.
+            
+        </p>
+
+        <p>
+           Доставка товаров займёт около недели. В случае задержки - мы обязательно сообщим вам на почту.
+        </p>
+
+            
+
+        <p>Сумма к оплате - <u>{{ finally_price }}Р</u></p>
+
+        {% if display_vidget != "display" %}
+            <!--Кнопка ознакомления с прочитанным выше-->
+            <div id="redirect_for_display_vidget_block">
+                <a href="{{ url_for('display_vidget') }}" id="display_vidget_a">Ознакомлен</a>
+            </div>
+        {% endif %}
+    </div>
+
+</section>
+
+
+{% endblock %}

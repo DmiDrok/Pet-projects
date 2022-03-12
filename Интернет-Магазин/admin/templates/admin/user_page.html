@@ -1,0 +1,8 @@
+{% extends 'admin/base_adm.html' %}
+{{ super() }}
+
+{% block content %}
+<div class="user_info">
+    <a href="{{ url_for('.user_basket', user_id=user_info.id, user_email=user_info.email) }}" id="basket_user">Корзина пользователя</a>
+</div>
+{% endblock %}

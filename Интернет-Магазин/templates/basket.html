@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{{ super() }}
+
+{% block title_block %}
+<title>Корзина</title>
+{% endblock %}
+
+{% block title_header %}
+<h1>Корзина</h1>
+{% endblock %}
+
+{% block content %}
+
+<!--Товары в корзине-->
+<section class="content_catalog basket_catalog">
+
+    {% for cat, msg in get_flashed_messages(True) %}
+    <h3 class="{{ cat }}">{{ msg }}</h3>
+    {% endfor %}
+
+    <!--Блок со всеми товарами-->
+    <div class="all_tovars_block all_basket">
+        {% for tovar in basket %}
+            <!--<div class="outer_div">-->
+                <a href="{{ url_for('page_tovar', tovar_id=tovar.id) }}" class="tov_a">
+                    <div class="tov_block">
+                        <div class="img_tov">
+                            <img src="{{ url_for('getting', column_id=tovar.id) }}" alt="">
+                        </div>
+
+                        <div class="text_tov">
+                            <p id="tovar_title">{{ tovar.title_tov }}</p>
+                            <p id="tovar_about">{{ tovar.about_tov }}</p>
+
+                            <span>{{ tovar.price_tov }}Р</span>
+                        </div>
+
+                        <!--Удаление из корзины-->
+                        <form action="{{ url_for('remove_out_basket', user_id=user_id, tovar_id=tovar.id) }}" method="POST" id="remove_from_basket_form">
+                            <input type="submit" value="X">
+                        </form>
+                    </div>
+
+                    <!--Для затемнения-->
+                    <div class="dark"></div>
+                </a>
+            <!--</div>-->
+        {% endfor %}
+    </div>
+
+    {% if sum_tovars >= 1 %}
+    <!--Кнопка оплаты-->
+    <div class="buy_btn_block">
+        <form action="{{ url_for('buy_basket', user_id=user_id, display_vidget='none_display') }}" method="POST" id="form_to_buy">
+            <input type="submit" value="Оплатить: {{ sum_tovars }}Р" />
+        </form>
+    </div>
+    {% endif %}
+
+</section>
+
+{% endblock %}

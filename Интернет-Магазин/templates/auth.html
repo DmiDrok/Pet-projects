@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{{ super() }}
+
+{% block content %}
+<section class="authorization">
+    <div class="block_form">
+        <!--Сообщения об ошибках-->
+        {% for cat, msg in get_flashed_messages(True) %}
+        <div class="flashed_messages {{ cat }}">
+            <h3>{{ msg }}</h3>
+        </div>
+        {% endfor %}
+        
+        <form action="" method="POST">
+            {{ form.hidden_tag() }}
+            <p>{{ form.email() }}</p>
+            <p>{{ form.password() }}</p>
+            <p class="remember_label">{{ form.remember_me.label() }} {{ form.remember_me() }}</p>
+            {{ form.submit() }}
+
+            <div class="ask_user">
+                <a href="{{ ask_href }}">{{ ask_text }}</a>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}

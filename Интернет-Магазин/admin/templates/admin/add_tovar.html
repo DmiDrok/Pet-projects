@@ -1,0 +1,17 @@
+{% extends 'admin/base_adm.html' %}
+{{ super() }}
+
+{% block content %}
+
+<section class="add_tovar_block">
+    <form action="" method="POST" id="add_tovar_form" enctype="multipart/form-data">
+        <input type="text" name="title_add_tov" placeholder="Название товара" />
+        <input type="text" name="about_add_tov" placeholder="Описание товара" />
+        <textarea name="content_add_tov" cols="30" rows="10" placeholder="Развёрнуто о товаре"></textarea>
+        <input type="text" name="price_add_tov" placeholder="Цена товара" />
+        <input type="file" name="file_img">
+        <input type="submit" value="{{ submit_value }}" />
+    </form>
+</section>
+
+{% endblock %}

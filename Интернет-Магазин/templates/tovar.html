@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{{ super() }}
+
+{% block title_block %}
+<title>Просмотр товара</title>
+{% endblock %}
+
+{% block title_header %}
+<h1>Просмотр товара</h1>
+{% endblock %}
+
+{% block content %}
+
+<section class="content_tov_block">
+
+    <!--Информация о товаре-->
+    <div class="content_info">
+        <div class="upper_info_block">
+            <!--Картинка товара-->
+            <div class="image_info">
+                <img src="{{ url_for('getting', column_id=id_tovar) }}" alt="">
+            </div>
+
+            <!--Описание товара-->
+            <div class="text_info">
+                <p>{{ text_info | safe }}</p>
+            </div>
+        </div>
+
+        <div class="bottom_info_block">
+            <!--Цена товара-->
+            <div class="price_info">
+                <p>Цена товара: <u>{{ price_info }}Р</u></p>
+            </div>
+
+            {% if admin %}
+            <!--Кнопка удаления и редактирования-->
+            <div class="delete_block">
+                <form action="{{ url_for('delete_tovar', tovar_id=id_tovar) }}" method="POST" id="del_form">
+                    <input type="submit" value="Удалить">
+                </form>
+
+                <form action="{{ url_for('redact_middle', tovar_id=id_tovar) }}" method="POST" id="redact_form">
+                    <input type="submit" value="Изменить" />
+                </form>
+            </div>
+            {% endif %}
+
+            <!--Кнопка добавки в корзину-->
+            <div class="in_basket">
+                <form action="{{ action_for_form }}" method="POST">
+                    <input class="{{ class_for_btn }}" type="submit" value="{{ text_for_btn }}">
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'admin/base_adm.html' %}
+{{ super() }}
+
+{% block content %}
+
+
+<div class="total_price_block">
+    <p>Цена корзины: <u>{{ total_price }}Р</u></p>
+</div>
+
+
+<div class="all_tovars_in_basket">
+    {% for tovar in all_tovars %}
+    <div class="tovar_block">
+        <a href="{{ url_for('page_tovar', tovar_id=tovar[0].id) }}">{{ tovar[0].title_tov }}</a>
+        <p>{{ tovar[0].price_tov }}Р</p>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

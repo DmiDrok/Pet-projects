@@ -1,0 +1,569 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,600;1,800;1,900&display=swap');
+/*  font-family: 'Merriweather', serif;
+    font-family: 'Montserrat', sans-serif;*/
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+a{text-decoration: none;}
+#strong_a{color: red;}
+
+body
+{
+    font-family: 'Merriweather', serif;
+    background-color: #f8f8f8;
+    min-height: 100vh;
+}
+
+/*Описание заголовка*/
+header
+{
+    display: grid;
+    grid-auto-flow: column;
+    padding: 2rem 0 2rem 4rem;
+    box-shadow: 1px 2px 5px 3px rgba(150, 150, 150, .4);
+    grid-template-columns: 500px auto;
+    background-color: #fff;
+}
+
+header nav
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header nav a
+{
+    font-size: 18px;
+    color: #000;
+}
+
+header nav a:hover
+{
+    color: #bb3f3f;
+}
+
+header nav a:not(:first-child)
+{
+    margin-left: 2rem;
+}
+
+/*Контент каталога с товарами*/
+.content_catalog
+{
+    padding: 4rem 3rem;
+    display: grid;
+}
+
+.all_tovars_block
+{
+    padding: 0 3rem 3rem 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 250px);
+    grid-gap: 5rem 3rem;
+    justify-content: center;
+}
+
+.content_catalog .tov_a, .tov_div
+{
+    display: block;
+    min-height: 300px;
+    box-shadow: 0px 1px 3px 2px rgba(200, 200, 200, 0.4);
+    position: relative;
+    transition: .1s;
+    color: #000;
+}
+
+
+.dark
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(200, 200, 200, 0);
+    transition: .2s;
+}
+
+.content_catalog .tov_a:hover, .tov_div:hover
+{
+    box-shadow: 0px 1px 3px 3px rgba(200, 200, 200, 0.8);
+}
+
+.content_catalog .tov_a:hover .dark, .tov_div:hover .dark
+{
+    background-color: rgba(170, 170, 170, 0.1);
+}
+
+.img_tov
+{
+    position: relative;
+    height: 200px;
+}
+
+.img_tov img
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.text_tov
+{
+    margin-top: 1rem;
+    display: grid;
+    grid-row-gap: 10px;
+    padding: 0 .7rem;
+}
+
+.text_tov p:nth-child(2)
+{
+    margin-bottom: 3rem;
+}
+
+.text_tov a{font-size: 17px;}
+
+.text_tov span
+{
+    text-align: end;
+    text-decoration: underline;
+    position: absolute;
+    bottom: .5rem;
+    right: .5rem;
+}
+
+.text_tov a:hover
+{
+    color: #bb3f3f;
+}
+
+/*Контент на странице товара*/
+.content_tov_block
+{
+    padding: 3rem;
+    /*box-shadow: 5px 1px 1px 1px rgba(200, 200, 200, 0.4);*/
+
+}
+
+.content_info
+{
+    display: grid;
+    grid-template-areas: 
+    "upper_block"
+    "bottom_block"
+    ;
+    grid-row-gap: 2rem;
+    padding: 2rem;
+    box-shadow: 3px 3px 3px 3px rgba(200, 200, 200, 0.4);
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.upper_info_block
+{
+    display: grid;
+    grid-area: upper_block;
+    grid-template-areas: 
+    "image text";
+    grid-template-columns: 30% 70%;
+}
+
+.bottom_info_block
+{
+    display: grid;
+    grid-area: bottom_block;
+    grid-template-areas: 
+    "price btn_delete btn_basket";
+}
+
+.image_info
+{
+    position: relative;
+    height: 300px;
+    width: 300px;
+    grid-area: image;
+}
+
+.image_info img
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.text_info
+{
+    grid-area: text;
+    max-height: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-right: 0.5rem;
+}
+
+.text_info p:not(:nth-child(1))
+{
+    margin-top: 1rem;
+}
+
+.text_info hr
+{
+    margin: 1rem 0;
+}
+
+.in_basket
+{
+    grid-area: btn_basket;
+    justify-self: end;
+}
+
+.in_basket form .default, .in_basket form .active, #del_form input[type="submit"], #redact_form input[type="submit"]
+{
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 700;
+    font-style: italic;
+    transition-duration: .2s;
+    background-color: #3b85ac;
+    border: none;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    transition-duration: .3s;
+    border-radius: 5px;
+}
+
+.in_basket form .default:hover
+{
+    background-color: #06547e;
+}
+
+.in_basket form .active
+{
+    background-color: #2a9939;
+}
+
+.in_basket form .active:hover
+{
+    background-color: #166821;
+}
+
+.delete_block
+{
+    grid-area: btn_delete;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+}
+
+#del_form input[type="submit"]
+{
+    background-color: #bb3f3f;
+    font-style: normal;
+}
+
+#del_form input[type="submit"]:hover
+{
+    background-color: #771010;
+}
+
+#redact_form input[type="submit"]
+{
+    margin-left: 1rem;
+}
+
+#redact_form input[type="submit"]
+{
+    background-color: #2a9939;
+    font-style: normal;
+}
+
+#redact_form input[type="submit"]:hover
+{
+    background-color: #166821;
+}
+
+.price_info
+{
+    grid-area: price;
+    align-self: center;
+}
+
+.price_info u{text-decoration: underline; font-style: italic;}
+
+/*Авторизация*/
+.authorization, .registration
+{
+    display: grid;
+    height: 70vh;
+}
+.block_form
+{
+    display: grid;
+    align-self: center;
+}
+
+.block_form form
+{
+    display: grid;
+    grid-row-gap: 1rem;
+    justify-self: center;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 5rem;
+    position: relative;
+    background-color: #fff;
+    box-shadow: 0px 3px 5px 7px rgba(200, 200, 200, .4);
+}
+
+.block_form form input
+{
+    padding: 5px 10px;
+    outline: none;
+    padding: 5px 7px;
+    font-size: 14px;
+}
+
+.block_form form input[type="submit"]
+{
+    margin-top: .3rem;
+    cursor: pointer;
+    background-color: #fff;
+    border: 1px solid #000;
+    transition-duration: .3s;
+}
+
+.block_form form input[type="submit"]:hover
+{
+    background-color: #000;
+    color: #fff;
+}
+
+.ask_user
+{
+    position: absolute;
+    bottom: .5rem;
+    right: .5rem;
+    font-size: 13px;
+}
+
+.ask_user a:hover
+{
+    color: #bb3f3f;
+}
+
+.remember_label
+{
+    font-size: 14px;
+    text-align: end;
+    cursor: pointer;
+}
+
+.remember_label input{cursor: pointer;}
+
+.flashed_messages
+{
+    margin-top: 2rem;
+    text-align: center;
+    justify-self: center;
+    margin-bottom: 2rem;
+    opacity: .8;
+    cursor: default;
+}
+
+.flashed_messages h3
+{
+    font-style: italic;
+    font-weight: 400;
+    text-decoration: underline;
+}
+
+#tovar_title
+{
+    color: #513ab8;
+    width: 250px;
+    word-wrap: break-word;
+}
+
+.text_tov #tovar_about
+{
+    width: 250px;
+    word-wrap: break-word;
+}
+
+/*Пагинация*/
+.pagination
+{
+    display: flex;
+}
+
+.pagination a:not(:first-child)
+{
+    margin-left: 10px;
+}
+
+.pagination a
+{
+    font-family: Arial;
+    padding: 10px 15px;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.now_page
+{
+    color: #bb3f3f;
+}
+
+/*Корзина*/
+.tov_div
+{
+    cursor: default;
+}
+
+.tov_div #tovar_title
+{
+    cursor: pointer;
+
+}
+
+.tov_div #tovar_title:hover
+{
+    color: #771010;
+}
+
+#remove_from_basket_form
+{
+    position: absolute;
+    right: -1px;
+    top: -1px;
+    margin-right: 1px;
+    margin-top: 1px;
+}
+
+#remove_from_basket_form input[type="submit"]
+{
+    border: none;
+    background-color: #bb3f3f;
+    color: #fff;
+    padding: 6px;
+    cursor: pointer;
+    border-radius: 2px;
+    font-size: 17px;
+    font-weight: 600;
+    transition: .1s;
+}
+
+#remove_from_basket_form input[type="submit"]:hover
+{
+    opacity: .7;
+}
+
+.all_basket .tov_a .dark
+{
+    pointer-events: none;
+}
+
+.basket_catalog h3
+{
+    text-align: center;
+    text-decoration: underline;
+    font-style: italic;
+    font-weight: 600;
+}
+
+/*Кнопка оплаты*/
+.buy_btn_block
+{
+    justify-self: end;
+}
+
+#form_to_buy input[type="submit"]
+{
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 700;
+    font-style: italic;
+    transition-duration: .2s;
+    background-color: #3b85ac;
+    border: none;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    transition-duration: .3s;
+    border-radius: 5px;
+}
+
+#form_to_buy input[type="submit"]:hover
+{
+    background-color: #06547e;
+}
+
+.payment
+{
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+}
+
+.notification
+{
+    margin-left: 4rem;
+    background-color: #fff;
+    box-shadow: 1px 1px 3px 3px rgba(200, 200, 200, .4);
+    padding: 1.5rem;
+    width: 35%;
+    border-radius: 5px;
+}
+
+.notification 
+{
+    margin-top: 1rem;
+}
+
+.notification p::first-letter
+{
+    margin-left: 1rem;
+    color: #f50303;
+    font-size: 17px;
+}
+
+#redirect_for_display_vidget_block
+{
+    margin-top: 1rem;
+    text-align: end;
+}
+
+#display_vidget_a
+{
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 700;
+    font-style: italic;
+    transition-duration: .2s;
+    background-color: #e91111;
+    border: none;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    transition-duration: .1s;
+    border-radius: 5px;
+}
+
+#display_vidget_a:hover
+{
+    background-color: #24c31e;
+}
+
+.notification p:not(:first-child)
+{
+    margin-top: 1rem;
+}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{{ super() }}
+
+{% block title_block %}
+<title>Магазин</title>
+{% endblock %}
+
+{% block title_header %}
+<h1>Магазин</h1>
+{% endblock %}
+
+{% block content %}
+
+<section class="content_catalog">
+
+    <!--Блок со всеми товарами-->
+    <div class="all_tovars_block">
+        {% for tovar in list_tov %}
+        <a href="{{ url_for('page_tovar', tovar_id=tovar.id) }}" class="tov_a">
+            <div class="tov_block">
+                <div class="img_tov">
+                    <img src="{{ url_for('getting', column_id=tovar.id) }}" alt="">
+                </div>
+
+                <div class="text_tov">
+                    <p id="tovar_title">{{ tovar.title_tov }}</p>
+                    <p id="tovar_about">{{ tovar.about_tov }}</p>
+
+                    <span>{{ tovar.price_tov }}Р</span>
+                </div>
+            </div>
+
+            <!--Для затемнения-->
+            <div class="dark"></div>
+        </a>
+        {% endfor %}
+    </div>
+
+    <div class="pagination">
+        {% for i in range(1, num_pages+1) %}
+            <a href="/page={{ i }}" class="{% if i == page_number %}now_page{% endif %}">{{ i }}</a>        
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

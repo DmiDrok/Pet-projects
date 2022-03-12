@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    {% block title_block %}
+    {% endblock %}
+    {% endif %}
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    
+    <!--Заголовок-->
+    <header>
+        {% if title_header %}
+        <h1>{{ title_header }}</h1>
+        {% else %}
+        {% block title_header %}
+        {% endblock %}
+        {% endif %}
+
+        <nav>
+            <a href="{{ url_for('index') }}">Каталог</a>
+            <a href="{{ url_for('basket') }}">Корзина</a>
+            {% if admin %}
+            <a href="{{ url_for('admin.index') }}" id="strong_a"><u>Админка</u></a>
+            {% endif %}
+        </nav>
+    </header>
+
+
+    <!--Контент на странице-->
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>
